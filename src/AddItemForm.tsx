@@ -1,5 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import styles from "./Todolist.module.css";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -28,12 +31,19 @@ const AddItemForm = (props: AddItemFormPropsType) => {
 
     return (
         <div>
-            <input className={error ? styles.error : ''}
-                   value={title}
-                   onChange={onChangeHandler}
-                   onKeyPress={onEnterDownAddItem}/>
-            <button onClick={addItem}>+</button>
-            {error && <div className={styles.errorMessage}>{error}</div>}
+            <TextField
+                id="outlined-basic"
+                label={ error ? "Title is required" : "type out here..."}
+                variant="outlined"
+                size="small"
+                value={title}
+                onChange={onChangeHandler}
+                onKeyPress={onEnterDownAddItem}
+                error={!!error}
+            />
+            <Button variant="contained" style={{maxWidth: '38px', maxHeight: '38px', minWidth: '38px', minHeight: '38px'}}
+                    onClick={addItem}>+</Button>
+            {/*{error && <div className={styles.errorMessage}>{error}</div>}*/}
 
         </div>
     );

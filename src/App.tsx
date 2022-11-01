@@ -3,10 +3,14 @@ import './App.css';
 import {TaskType, Todolist} from './Todolist';
 import {v1} from "uuid";
 import AddItemForm from "./AddItemForm";
+import ButtonAppBar from "./ButtonAppBar";
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 export type FilterValuesType = "all" | "active" | "completed";
 
-type TodolistType = {
+export type TodolistType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -78,7 +82,6 @@ function App() {
     function changeFilter(value: FilterValuesType, todoListId: string) {
         setTodoLists(todoLists.map(tl => tl.id === todoListId ? {...tl, filter: value} : tl));
     }
-
     const changeTodolistTitle = (title: string, todoListId: string) => {
         setTodoLists(todoLists.map(tl => tl.id === todoListId ? {...tl, title: title} : tl));
     }
@@ -99,7 +102,8 @@ function App() {
         return tasksForTodolist
     }
     const todoListComponents = todoLists.map(tl => {
-        return (
+        return <Grid item >
+            <Paper elevation={3} style={{padding: '10px'}}>
             <Todolist
                 key={tl.id}
                 title={tl.title}
@@ -115,7 +119,8 @@ function App() {
                 changeTodolistTitle={changeTodolistTitle}
                 tasks={getFilteredTasks(tasks[tl.id], tl.filter)}
             />
-        )
+        </Paper>
+        </Grid>
     })
     const addTodoList = (title: string) => {
         const newTodolistId: string = v1()
@@ -124,16 +129,23 @@ function App() {
             title: title,
             filter: "all"
         }
-        setTodoLists([...todoLists, newTodolist])
-        setTasks({...tasks, [newTodolistId]: []})
+        setTodoLists([newTodolist, ...todoLists])
+        setTasks({[newTodolistId]: [], ...tasks})
     }
 
     return (
         <div className="App">
+            <ButtonAppBar/>
+            <Container fixed >
+                <Grid container style={{padding: "40px 0 40px 0"}}>
             <AddItemForm addItem={addTodoList} />
+                </Grid>
+                <Grid container spacing={3}>
             {todoListComponents}
+                </Grid>
+                </Container>
         </div>
     );
 }
 
-export default App;
+export default App
