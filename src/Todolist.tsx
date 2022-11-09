@@ -45,9 +45,9 @@ export function Todolist(props: PropsType) {
         const IsDoneHandler = (event: ChangeEvent<HTMLInputElement>) => {
             props.changeIsDone(t.id, event.currentTarget.checked, props.todoListId)
         }
-        const changeTaskTitle = (title: string) =>
+        const changeTaskTitle = (title: string) => {
             props.changeTaskTitle(t.id, title, props.todoListId)
-
+        }
         return (
             <li key={t.id} className={t.isDone ? styles.isDone : ""}>
                 {/*          <Checkbox checked={t.isDone} callBack={(isDone: boolean) => props.changeIsDone(t.id, event.currentTarget.checked, props.todoListId)}/>*/}

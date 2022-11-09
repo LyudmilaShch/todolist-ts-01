@@ -17,6 +17,7 @@ const EditableSpan = (props: EditableSpanPropsType) => {
     }
     const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.currentTarget.value)
+        console.log(title)
     }
     return (
         isEditMode
