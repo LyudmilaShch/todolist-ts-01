@@ -8,8 +8,8 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-export type FilterValuesType = "all" | "active" | "completed";
 
+export type FilterValuesType = "all" | "active" | "completed";
 export type TodolistType = {
     id: string
     title: string
@@ -22,7 +22,6 @@ export type TasksStateType = {
 
 
 function App() {
-    // BLL:
     const todoListId_1 = v1()
     const todoListId_2 = v1()
     const [todoLists, setTodoLists] = useState<Array<TodolistType>>([
@@ -105,6 +104,7 @@ function App() {
     const todoListComponents = todoLists.map(tl => {
         return <Grid item >
             <Paper elevation={3} style={{padding: '10px'}}>
+
             <Todolist
                 key={tl.id}
                 title={tl.title}
