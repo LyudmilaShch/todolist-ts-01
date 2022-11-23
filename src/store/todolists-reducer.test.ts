@@ -34,6 +34,7 @@ test('correct todolist should be added', () => {
 
 test('correct filter of todolist should be changed', () => {
     let newFilter: FilterValuesType = "completed";
+
     const endState = todolistsReducer(startState, ChangeTodolistFilterAC(newFilter, todolistId2) );
 
     expect(endState[0].filter).toBe("all");

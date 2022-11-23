@@ -43,6 +43,7 @@ export function Todolist(props: PropsType) {
             props.removeTask(t.id, props.todoListId)
         }
         const IsDoneHandler = (event: ChangeEvent<HTMLInputElement>) => {
+
             props.changeIsDone(t.id, event.currentTarget.checked, props.todoListId)
         }
         const changeTaskTitle = (title: string) => {

@@ -1,5 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import styles from "./Todolist.module.css";
+import React, {ChangeEvent, KeyboardEvent, memo, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -8,11 +7,14 @@ type AddItemFormPropsType = {
     addItem: (title: string) => void
 }
 
-const AddItemForm = (props: AddItemFormPropsType) => {
+const AddItemForm = memo((props: AddItemFormPropsType) => {
+    console.log('AddItemForm')
     const [title, setTitle] = useState('')
     const [error, setError] = useState<string | null>(null)
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setError(null)
+        if (error !== null){
+            setError(null)
+        }
         setTitle(event.currentTarget.value)
     }
     const onEnterDownAddItem = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -47,6 +49,6 @@ const AddItemForm = (props: AddItemFormPropsType) => {
 
         </div>
     );
-};
+});
 
 export default AddItemForm;
