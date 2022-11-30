@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import './App.css';
 import {TaskType} from './Todolist';
-import AddItemForm from "./AddItemForm";
+import AddItemForm from "./AddItemForm/AddItemForm";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';

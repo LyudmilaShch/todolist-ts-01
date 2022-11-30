@@ -3,7 +3,7 @@ import {TodolistType} from "./AppWithRedux";
 import EditableSpan from "./Components/EditableSpan";
 import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
-import AddItemForm from "./AddItemForm";
+import AddItemForm from "./AddItemForm/AddItemForm";
 import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./store/store";

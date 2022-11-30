@@ -5,10 +5,7 @@ import Delete from "@material-ui/icons/Delete";
 import styles from "./Todolist.module.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import {TaskType} from "./Todolist";
-import {changeTaskStatusAC} from "./store/tasks-reducer";
-import {stringify} from "uuid/index";
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "./store/store";
+
 
 export type TaskPropsType = {
     task: TaskType
